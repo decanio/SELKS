@@ -58,6 +58,7 @@ cp LICENSE Stamus-Live-Build/config/includes.chroot/root/Desktop/
 cat README.rst | sed -e 's/https:\/\/your.selks.IP.here/http:\/\/selks/' | rst2html > Stamus-Live-Build/config/includes.chroot/root/Desktop/README.html
 # logstash
 cp staging/etc/logstash/conf.d/logstash.conf Stamus-Live-Build/config/includes.chroot/etc/logstash/conf.d/ 
+cp staging/etc/logstash/conf.d/logstash-bro22-parse.conf Stamus-Live-Build/config/includes.chroot/etc/logstash/conf.d/ 
 # suricata init script
 cp staging/etc/default/suricata Stamus-Live-Build/config/includes.chroot/etc/default/
 cp staging/etc/init.d/suricata Stamus-Live-Build/config/includes.chroot/etc/init.d/
@@ -99,6 +100,10 @@ python-yaml ssh sudo tcpdump nginx openssl
 python-pip lxde debian-installer-launcher " \
 >> Stamus-Live-Build/config/package-lists/StamusNetworks.list.chroot
 
+# add packages to be installed (required by Bro)
+echo "
+cmake make libpcap-dev libssl-dev python-dev swig " \
+>> Stamus-Live-Build/config/package-lists/StamusNetworks.list.chroot
 
 # add specific tasks(script file) to be executed 
 # inside the chroot environment
