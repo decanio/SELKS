@@ -221,6 +221,7 @@ cp LICENSE Stamus-Live-Build/config/includes.chroot/root/Desktop/
 cat README.rst | sed -e 's/https:\/\/your.selks.IP.here/http:\/\/selks/' | rst2html > Stamus-Live-Build/config/includes.chroot/root/Desktop/README.html
 # Logstash
 cp staging/etc/logstash/conf.d/logstash.conf Stamus-Live-Build/config/includes.chroot/etc/logstash/conf.d/ 
+cp staging/etc/logstash/conf.d/logstash-bro22-parse.conf Stamus-Live-Build/config/includes.chroot/etc/logstash/conf.d/ 
 # Overwrite Suricata default script
 cp staging/etc/default/suricata Stamus-Live-Build/config/includes.chroot/etc/default/
 # Iceweasel bookmarks
@@ -263,6 +264,11 @@ echo "
 ethtool bwm-ng iptraf htop rsync tcpreplay sysstat hping3 screen ngrep 
 tcpflow dsniff mc python-daemon wget curl vim bootlogd lsof" \
 >> Stamus-Live-Build/config/package-lists/StamusNetworks-Tools.list.chroot
+
+# Add additional packages to be installed (required by Bro)
+echo "
+cmake make libpcap-dev libssl-dev python-dev swig " \
+>> Stamus-Live-Build/config/package-lists/StamusNetworks.list.chroot
 
 # Unless otherwise specified the ISO will be with a Desktop Environment
 if [[ -z "$GUI" ]]; then 
