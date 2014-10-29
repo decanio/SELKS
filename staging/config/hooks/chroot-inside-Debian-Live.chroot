@@ -71,6 +71,27 @@ apt-get update && apt-get install -y evebox
 systemctl enable evebox.service
 ### END Evebox ###
 
+#### Bro 2.3 ###
+#cd /opt/selks && \
+#wget http://www.bro.org/downloads/release/bro-2.3.tar.gz && \
+#tar -xzf bro-2.3.tar.gz && \
+#cd bro-2.3
+#./configure && make && make install && ldconfig
+#cd ..
+#rm -rf bro-2.3 bro-2.3.tar.gz 
+#
+#### Bro ###
+
+### Bro 2.2 ###
+cd /opt/selks && \
+wget http://www.bro.org/downloads/archive/bro-2.2.tar.gz && \
+tar -xzf bro-2.2.tar.gz && \
+cd bro-2.2
+./configure && make && make install && ldconfig
+cd ..
+rm -rf bro-2.2 bro-2.2.tar.gz 
+### Bro ###
+
 systemctl enable elasticsearch.service && \
 systemctl enable logstash.service && \
 systemctl enable suri_reloader.service
