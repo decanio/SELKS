@@ -245,6 +245,7 @@ mkdir -p config/includes.chroot/etc/conky/
 mkdir -p config/includes.chroot/etc/alternatives/
 mkdir -p config/includes.chroot/etc/systemd/system/
 mkdir -p config/includes.chroot/var/backups/
+mkdir -p config/includes.chroot/usr/local/bro/etc
 
 cd ../
 
@@ -270,6 +271,10 @@ cp staging/usr/share/applications/Scirius.desktop Stamus-Live-Build/config/inclu
 # Logstash
 cp staging/etc/logstash/conf.d/logstash.conf Stamus-Live-Build/config/includes.chroot/etc/logstash/conf.d/ 
 cp staging/etc/logstash/conf.d/logstash-bro22-parse.conf Stamus-Live-Build/config/includes.chroot/etc/logstash/conf.d/ 
+# Overwrite Bro default node.cfg
+cp staging/usr/local/bro/etc/node.cfg Stamus-Live-Build/config/includes.chroot/usr/local/bro/etc/
+# Overwrite Suricata default suricata.yaml
+cp staging/etc/suricata/suricata.yaml Stamus-Live-Build/config/includes.chroot/etc/suricata/
 # Overwrite Suricata default script
 cp staging/etc/default/suricata Stamus-Live-Build/config/includes.chroot/etc/default/
 # Iceweasel bookmarks
