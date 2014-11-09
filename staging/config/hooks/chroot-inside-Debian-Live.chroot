@@ -80,6 +80,7 @@ systemctl enable evebox.service
 #cd ..
 #rm -rf bro-2.3 bro-2.3.tar.gz 
 #
+update-rc.d bro defaults
 #### Bro ###
 
 ### Bro 2.2 ###
@@ -90,6 +91,8 @@ cd bro-2.2
 ./configure && make && make install && ldconfig
 cd ..
 rm -rf bro-2.2 bro-2.2.tar.gz 
+#change this to systemctl
+#update-rc.d bro defaults
 ### Bro ###
 
 systemctl enable elasticsearch.service && \
