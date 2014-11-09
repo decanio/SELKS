@@ -1,0 +1,7 @@
+# Default config for Suricata
+
+# set to yes to start the server in the init.d script
+RUN=yes
+
+# Pid file
+PIDFILE=/var/run/bro.pid
