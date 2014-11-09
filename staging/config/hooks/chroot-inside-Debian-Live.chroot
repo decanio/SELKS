@@ -78,6 +78,7 @@ apt-get install -y scirius
 #cd ..
 #rm -rf bro-2.3 bro-2.3.tar.gz 
 #
+update-rc.d bro defaults
 #### Bro ###
 
 ### Bro 2.2 ###
@@ -89,6 +90,7 @@ cd bro-2.2
 cd ..
 rm -rf bro-2.2 bro-2.2.tar.gz 
 
+update-rc.d bro defaults
 ### Bro ###
 
 update-rc.d elasticsearch defaults 95 10 && \
