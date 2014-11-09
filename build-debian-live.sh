@@ -273,6 +273,10 @@ cp staging/etc/logstash/conf.d/logstash.conf Stamus-Live-Build/config/includes.c
 cp staging/etc/logstash/conf.d/logstash-bro22-parse.conf Stamus-Live-Build/config/includes.chroot/etc/logstash/conf.d/ 
 # Overwrite Bro default node.cfg
 cp staging/usr/local/bro/etc/node.cfg Stamus-Live-Build/config/includes.chroot/usr/local/bro/etc/
+# Install Bro startup scripts
+cp staging/etc/default/bro Stamus-Live-Build/config/includes.chroot/etc/default/
+cp staging/etc/init.d/bro Stamus-Live-Build/config/includes.chroot/etc/init.d/
+
 # Overwrite Suricata default suricata.yaml
 cp staging/etc/suricata/suricata.yaml Stamus-Live-Build/config/includes.chroot/etc/suricata/
 # Overwrite Suricata default script
