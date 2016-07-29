@@ -54,12 +54,12 @@ if [ ! -e /proc/net/netfilter/nf_queue ]; then
 fi
 }
 
-check_run_dir() {
-    if [ ! -d /var/run/suricata ]; then
-	mkdir /var/run/suricata
-	chmod 0755 /var/run/suricata
-    fi
-}
+#check_run_dir() {
+#    if [ ! -d /var/run/suricata ]; then
+#	mkdir /var/run/suricata
+#	chmod 0755 /var/run/suricata
+#    fi
+#}
 
 
 
@@ -97,15 +97,17 @@ case "$1" in
                exit 0
            fi
        fi
-       check_run_dir
+       #check_run_dir
        echo -n "Starting Bro..."
        #if [ -f /usr/lib/libtcmalloc_minimal.so.0 ] && [ "x$TCMALLOC" = "xYES" ]; then
        #    export LD_PRELOAD="/usr/lib/libtcmalloc_minimal.so.0"
        #    #echo "Using googles tcmalloc for minor performance boost!?!"
        #fi
        #$DAEMON $SURICATA_OPTIONS > /var/log/suricata/suricata-start.log  2>&1 &
-       /usr/local/bro/bin/broctl install
-       sleep 1
+       if [ ! -f /usr/local/bro/spool/installed-scripts-do-not-touch/auto/broctl-config.bro ]; then
+           /usr/local/bro/bin/broctl install
+           sleep 1
+       fi
        /usr/local/bro/bin/broctl start
        echo " done."
        ;;

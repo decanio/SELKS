@@ -71,6 +71,17 @@ apt-get update && apt-get install -y evebox
 systemctl enable evebox.service
 ### END Evebox ###
 
+#### Bro 2.4.1 ###
+cd /opt/selks && \
+wget http://www.bro.org/downloads/release/bro-2.4.1.tar.gz && \
+tar -xzf bro-2.4.1.tar.gz && \
+cd bro-2.4.1
+./configure && make && make install && ldconfig
+cd ..
+rm -rf bro-2.4.1 bro-2.4.1.tar.gz 
+systemctl enable bro.service
+#### Bro ###
+
 #### Bro 2.3 ###
 #cd /opt/selks && \
 #wget http://www.bro.org/downloads/release/bro-2.3.tar.gz && \
@@ -80,17 +91,17 @@ systemctl enable evebox.service
 #cd ..
 #rm -rf bro-2.3 bro-2.3.tar.gz 
 #
-update-rc.d bro defaults
+#update-rc.d bro defaults
 #### Bro ###
 
 ### Bro 2.2 ###
-cd /opt/selks && \
-wget http://www.bro.org/downloads/archive/bro-2.2.tar.gz && \
-tar -xzf bro-2.2.tar.gz && \
-cd bro-2.2
-./configure && make && make install && ldconfig
-cd ..
-rm -rf bro-2.2 bro-2.2.tar.gz 
+#cd /opt/selks && \
+#wget http://www.bro.org/downloads/archive/bro-2.2.tar.gz && \
+#tar -xzf bro-2.2.tar.gz && \
+#cd bro-2.2
+#./configure && make && make install && ldconfig
+#cd ..
+#rm -rf bro-2.2 bro-2.2.tar.gz 
 #change this to systemctl
 #update-rc.d bro defaults
 ### Bro ###
@@ -116,7 +127,7 @@ rm /etc/nginx/sites-enabled/default
 
 cd /opt/selks/scirius/
 sudo -u www-data python manage.py addsource "ETOpen Ruleset" https://rules.emergingthreats.net/open/suricata-2.0.7/emerging.rules.tar.gz http sigs
-sudo -u www-data python manage.py addsource "SSLBL abuse.ch" https://sslbl.abuse.ch/blacklist/sslblacklist.rules http sig
+#sudo -u www-data python manage.py addsource "SSLBL abuse.ch" https://sslbl.abuse.ch/blacklist/sslblacklist.rules http sig
 sudo -u www-data python manage.py defaultruleset "Default SELKS ruleset"
 sudo -u www-data python manage.py disablecategory "Default SELKS ruleset" stream-events
 sudo -u www-data python manage.py addsuricata SELKS "Suricata on SELKS" /etc/suricata/rules "Default SELKS ruleset"
